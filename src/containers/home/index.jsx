@@ -1,14 +1,13 @@
 import React from "react";
 import { Animate } from "react-simple-animate";
 import "./styles.scss";
-import {CTA } from "../../components"
+import { CTA } from "../../components";
 const Home = () => {
   return (
     <section id="home" className="home">
       <div className="home__text-wrapper">
         <h1>
-          Hi ,
-          I'm Nasrin 
+          Hi , I'm Nasrin
           <br />
           Front end developer
         </h1>

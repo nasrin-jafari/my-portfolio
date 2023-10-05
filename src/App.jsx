@@ -4,18 +4,15 @@ import { loadFull } from "tsparticles";
 import { Routes, Route } from "react-router-dom";
 import { Home, About, Skills, Portfolio, Contact } from "./containers";
 import particles from "./utils/particles";
-import {NavBar} from "./components";
+import { NavBar } from "./components";
 const App = () => {
-
   const handleInit = async (main) => {
     await loadFull(main);
   };
   return (
     <div className="App">
       <Particles id="particles" options={particles} init={handleInit} />
-
       <NavBar />
-      {/* main page content */}
       <div className="App__main-page-content">
         <Routes>
           <Route index path="/" element={<Home />} />

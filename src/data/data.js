@@ -76,36 +76,7 @@ export const portfolioData = [
     linkVercel: "https://themes-bejourney.vercel.app/",
   },
 ];
-export const navItems = [
-  { id: 1, label: "Home", link: "/" },
-  { id: 2, label: "About me", link: "/about" },
-  { id: 3, label: "Skills", link: "/skills" },
-  { id: 4, label: "Resume", link: "/resume" },
-  { id: 5, label: "Portfolio", link: "/portfolio" },
-  { id: 6, label: "Contact", link: "/contact" },
-];
-export const personalDetails = [
-  {
-    id: 1,
-    label: "Name",
-    value: "Nasrin Jafari",
-  },
-  {
-    id: 2,
-    label: "Age",
-    value: "24",
-  },
-  {
-    id: 4,
-    label: "Email",
-    value: "nasrin.jafari778@gmail.com",
-  },
-  {
-    id: 5,
-    label: "Contact Number",
-    value: "09184431846",
-  },
-];
+
 export const skillsData = [
   { id: 1, name: "HTML5", value: 90 },
   { id: 2, name: "CSS3", value: 85 },
