@@ -1,5 +1,5 @@
 import CV from "../../assets/cv.pdf";
-import "./cta.scss"
+import "./cta.scss";
 import { Link } from "react-router-dom";
 const CTA = () => {
   return (

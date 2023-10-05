@@ -25,15 +25,15 @@
 }
 .btn-primary {
   background: var(--theme-main-color);
-  color: var( --theme-background-color);
+  color: var(--theme-background-color);
 }
-.btn-primary:hover{
+.btn-primary:hover {
   background: transparent;
-    color: var(--theme-main-color);
-     border: 1px solid var(--theme-main-color);
+  color: var(--theme-main-color);
+  border: 1px solid var(--theme-main-color);
 }
 @media only screen and (min-width: 550px) {
- .btn {
-  width: 140px;
- }
+  .btn {
+    width: 140px;
+  }
 }
