@@ -1,8 +1,8 @@
-import React from 'react';
+import React from "react";
 import { BsPatchCheckFill } from "react-icons/bs";
-import "./styles.scss"
-import { skillsData } from '../../data/data';
-import { PageHeaderContent } from '../../components';
+import "./styles.scss";
+import { skillsData } from "../../data/data";
+import { PageHeaderContent } from "../../components";
 import { BsInfoCircleFill } from "react-icons/bs";
 
 import { Animate } from "react-simple-animate";
