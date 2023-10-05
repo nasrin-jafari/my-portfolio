@@ -1,0 +1,242 @@
+.about {
+  display: flex;
+  justify-content: space-between;
+  padding: 30px 50px;
+  width: 100%;
+  p {
+    max-width: 500px;
+    border-bottom: 1px dashed var(--theme-main-color);
+    padding-bottom: 4px;
+  }
+  .about-detail {
+    font-size: 1.3rem;
+    text-align: center;
+  }
+  .about-title {
+    font-size: 1.5rem;
+    margin-bottom: -12px;
+  }
+}
+
+.about__content__servicesWrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__innerContent {
+    width: 350px;
+    height: 350px;
+
+    background: radial-gradient(
+      180px,
+      var(--theme-main-color),
+      transparent 90%
+    );
+    position: relative;
+    border-radius: 50%;
+    border: 1.5px solid var(--theme-main-color);
+    animation: rotation 10s linear 1s infinite;
+
+    div:nth-child(1) {
+      position: absolute;
+      top: -9%;
+      left: 41%;
+    }
+
+    div:nth-child(2) {
+      position: absolute;
+      right: -8%;
+      top: 41.5%;
+    }
+
+    div:nth-child(3) {
+      position: absolute;
+      bottom: -10%;
+      left: 41%;
+    }
+
+    div:nth-child(4) {
+      position: absolute;
+      left: -8%;
+      top: 41%;
+    }
+  }
+}
+@keyframes rotation {
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.resume {
+  height: 100%;
+}
+
+.timeline__education {
+  width: 50%;
+  gap: 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  .vertical-timeline {
+    padding: 0;
+  }
+  &__header-text {
+    display: inline-block;
+    color: var(--theme-sub-text-color);
+    font-size: 22px;
+    font-weight: 700;
+    line-height: 1rem;
+    letter-spacing: 0.5px;
+    position: relative;
+    text-transform: uppercase;
+    padding-bottom: 8px;
+    border-bottom: 2px solid var(--theme-main-color);
+    // margin-bottom: -18px;
+  }
+
+  &__header-text::before,
+  &__header-text::after {
+    position: absolute;
+    content: "";
+    width: 2px;
+    height: 5px;
+    background-color: var(--theme-main-color);
+    bottom: -1px;
+  }
+
+  &__header-text::before {
+    left: 0;
+  }
+
+  &__header-text::after {
+    right: 0;
+  }
+
+  .vertical-timeline-element-content {
+    padding: 18px 18px !important;
+    margin: 0 0 0 60px !important;
+  }
+  .vertical-timeline-element-date {
+    padding: 0 !important;
+    padding-top: 8px !important;
+    font-size: 1rem !important;
+  }
+  .vertical-timeline-element-title-wrapper {
+    display: flex;
+    align-items: center;
+
+    .text-detail {
+      font-size: 16px;
+      margin-top: -4px;
+    }
+  }
+
+  .vertical-timeline-element-title-wrapper-description {
+    font-size: 18px;
+    margin-top: 12px;
+  }
+
+  .vertical-timeline-element-content {
+    box-shadow: none;
+  }
+
+  .vertical-timeline-element-content-arrow {
+    display: none;
+  }
+
+  .vertical-timeline-element-date {
+    opacity: 1;
+    color: var(--theme-sub-text-color);
+    font-size: 18px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .timeline {
+    &__education {
+      width: 100%;
+      height: 290px;
+    }
+  }
+  .text-detail {
+    font-size: 1.3rem;
+  }
+  .vertical-timeline-element-content {
+    padding: 8px 8px !important;
+    margin: 0 0 0 50px !important;
+  }
+  .about {
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    &__content__servicesWrapper {
+      width: 100%;
+      padding-top: 20px;
+    }
+
+    .about-detail,
+    .about-title {
+      display: none;
+    }
+    &__content__servicesWrapper {
+      margin: 10px 0px;
+      &__innerContent {
+        width: 230px;
+        height: 230px;
+        background: radial-gradient(
+          120px,
+          var(--theme-main-color),
+          transparent 120%
+        );
+
+        div:nth-child(1) {
+          position: absolute;
+          top: -10%;
+          left: 38%;
+          svg {
+            width: 40px;
+            height: 40px;
+          }
+        }
+
+        div:nth-child(2) {
+          position: absolute;
+          right: -11%;
+          top: 40%;
+          svg {
+            width: 40px;
+            height: 40px;
+          }
+        }
+
+        div:nth-child(3) {
+          position: absolute;
+          bottom: -12%;
+          left: 40%;
+          svg {
+            width: 40px;
+            height: 40px;
+          }
+        }
+
+        div:nth-child(4) {
+          position: absolute;
+          left: -12%;
+          top: 40%;
+          svg {
+            width: 40px;
+            height: 40px;
+          }
+        }
+      }
+    }
+  }
+}
+@media only screen and (max-width: 500px) {
+  .timeline {
+    &__education {
+      width: 100%;
+      height: 290px;
+    }
+  }
+}
