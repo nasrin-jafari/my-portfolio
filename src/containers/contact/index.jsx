@@ -1,8 +1,8 @@
-import React, { useRef } from 'react';
+import React, { useRef } from "react";
 import { FaLinkedinIn, FaTelegramPlane } from "react-icons/fa";
 import { HiMail } from "react-icons/hi";
-import emailjs from '@emailjs/browser';
-import "./styles.scss"
+import emailjs from "@emailjs/browser";
+import "./styles.scss";
 import { Animate } from "react-simple-animate";
 const Contact = () => {
   const form = useRef();
@@ -81,4 +81,4 @@ const Contact = () => {
     </div>
   );
 };
-export default Contact
+export default Contact;
