@@ -1,8 +1,6 @@
 import { AiFillStar, AiOutlineHome, AiOutlineUser } from "react-icons/ai";
-import { BiBook } from "react-icons/bi";
-import { RiServiceLine } from "react-icons/ri";
 import { BiMessageSquareDetail } from "react-icons/bi";
-import {CgWebsite }from "react-icons/cg"
+import { CgWebsite } from "react-icons/cg";
 import "./navbar.scss";
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
@@ -46,13 +44,11 @@ const NavItems = [
   {
     id: 3,
     link: "/skills",
-    // icon: <BiBook size={20} />,
     icon: <AiFillStar size={20} />,
   },
   {
     id: 4,
     link: "/portfolio",
-    // icon: <RiServiceLine size={20} />,
     icon: <CgWebsite size={20} />,
   },
   {
