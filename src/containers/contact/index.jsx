@@ -56,13 +56,13 @@ const Contact = () => {
       >
         <div className="social">
           <a href="https://www.linkedin.com/in/nasrin-jafri" target="_blank">
-            <FaLinkedinIn size={24} />
+            <FaLinkedinIn size={28} />
           </a>
           <a href="https://t.me/Naasiiiin" target="_blank">
-            <FaTelegramPlane size={24} />
+            <FaTelegramPlane size={28} />
           </a>
           <a href="mailto:nasrin.jafari778@gmail.com" target="_blank">
-            <HiMail size={24} />
+            <HiMail size={28} />
           </a>
         </div>
       </Animate>
@@ -81,14 +81,14 @@ const Contact = () => {
         />
         <textarea
           name="message"
-          rows="6"
+          rows="7"
           placeholder="Your Message"
           required
         ></textarea>
         <button
           type="submit"
           className="btn btn-primary"
-          style={{ padding: "10px" }}
+          
         >
           Send Message
         </button>
