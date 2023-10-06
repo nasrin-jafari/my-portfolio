@@ -7,6 +7,9 @@
   min-height: 100vh;
   align-items: center;
   padding-top: 32px;
+  padding-bottom: 90px;
+  border: 2px solid red;
+
 }
 form {
   width: 90%;
@@ -45,7 +48,7 @@ textarea:focus {
   box-shadow: 0 0 10px var(--theme-main-color);
 }
 textarea {
-  margin-bottom: 18px;
+  margin-bottom: 20px;
 }
 button {
   font-size: 1.7rem !important;
