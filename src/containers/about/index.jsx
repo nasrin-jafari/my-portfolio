@@ -13,7 +13,7 @@ import {
 import "react-vertical-timeline-component/style.min.css";
 import { resumeData } from "../../data/data";
 const jobSummary =
-  "hi I'm nasrin, 24 years old, and I am a front end developer and like challenge and excitement";
+  "Hi i'm nasrin, 24 years old, and I am a front end developer and like challenge and excitement";
 const About = () => {
   return (
     <div className="about">
@@ -35,6 +35,7 @@ const About = () => {
                 background: "none",
                 color: "var(--theme-sub-text-color)",
                 border: "1.5px solid var(--theme-main-color)",
+                borderRadius: "16px",
               }}
               date={item.date}
               icon={<MdLocalLibrary />}
@@ -45,7 +46,8 @@ const About = () => {
             >
               <div className="vertical-timeline-element-title-wrapper">
                 <p className="text-detail">
-                  {item.title}
+                  {item.title} :
+                  <br className="break" />
                   {item.subTitle}
                 </p>
               </div>

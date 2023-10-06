@@ -9,11 +9,10 @@
 .swiper {
   width: 100%;
   box-shadow: 0 0 12px 0 #525050 !important;
-    backdrop-filter: blur(3px);
+  backdrop-filter: blur(2px);
 }
 .portfolio__item-image {
   box-shadow: 0 0 4px 0 #525050 !important;
-
 }
 .swiper-slide {
   text-align: center;
@@ -24,7 +23,7 @@
   align-items: center;
 }
 .swiper-pagination-bullet {
-  display:none  !important;
+  display: none !important;
 }
 
 .swiper .swiper-button-prev,
@@ -44,13 +43,12 @@
 }
 @media screen and (min-width: 400px) {
   .portfolio {
-  align-items: center;
+    align-items: center;
   }
 
   .swiper-slide img {
-  height: 350px;
-
-}
+    height: 350px;
+  }
 }
 
 .autoplay-progress {
@@ -111,7 +109,6 @@
 .portfolio__item h3 {
   margin-top: 18px;
   margin-bottom: 24px;
-
 }
 .portfolio__item-cta {
   display: flex;

@@ -91,13 +91,13 @@ export const skillsData = [
 ];
 export const resumeData = [
   {
-    title: "University : ",
+    title: "University",
     subTitle: "' University buAli Sina'",
     description: "Master of International Law",
     date: "2016 - 2022",
   },
   {
-    title: "Educational academy :",
+    title: "Educational academy",
     subTitle: "'Daneshkar '",
     description: "Bootcamp React",
     date: "2022 - 2023",
