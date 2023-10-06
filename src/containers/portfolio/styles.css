@@ -1,19 +1,23 @@
 .portfolio {
   display: flex;
   justify-content: center;
+  align-items: center;
   width: 100%;
-  height: 88vh;
-  padding-top: 20px;
+  height: 100%;
+  padding-top: 32px;
+  padding-bottom: 90px;
 }
 .swiper {
   width: 100%;
-  height: 100%;
+
   box-shadow: 0 0 12px 0 #525050 !important;
-  max-height: 540px;
+  /* max-height: 540px; */
+    /* height: 68vh; */
 }
 .portfolio__item-image {
-  margin-bottom: 2px;
+  /* margin-bottom: 20px; */
   box-shadow: 0 0 4px 0 #525050 !important;
+
 }
 .swiper-slide {
   text-align: center;
@@ -22,13 +26,13 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  height: 600px;
 }
 .swiper-pagination-bullet {
-  background-color: #ccc !important;
+  /* background-color: #ccc !important;
   opacity: 1;
   width: 6px;
-  height: 6px;
+  height: 6px; */
+  display:none  !important;
 }
 .swiper-pagination-bullet-active {
   background-color: var(--theme-main-color) !important;
@@ -45,11 +49,27 @@
 .swiper-slide img {
   /* display: ; */
   width: 100%;
-  height: 60vh;
+  height: 250px;
   object-fit: cover;
-  border-radius: inherit;
 }
+@media screen and (min-width: 400px) {
+  .portfolio {
+  align-items: center;
+  }
+  .swiper {
+    /* height: 82vh; */
+}
+  .swiper-slide img {
+  height: 350px;
 
+}
+}
+/* @media screen and (min-width: 700px) {
+  .swiper-slide img {
+  height: 400px;
+
+}
+} */
 .autoplay-progress {
   position: absolute;
   right: 2px;
@@ -106,12 +126,12 @@
   overflow: hidden;
 }
 .portfolio__item h3 {
-  margin-bottom: 5px;
+  margin: 20px 0;
 }
 .portfolio__item-cta {
   display: flex;
   gap: 1rem;
-  margin-bottom: 0.2rem;
+  margin-bottom: 1.5rem !important;
 }
 /* ================ MEDIA QUERIES (MEDIUM DEVICES) ============= */
 
