@@ -25,7 +25,7 @@ const Contact = () => {
           console.log(error.text);
         }
       );
-      form.current.reset()
+    form.current.reset();
   };
 
   return (
@@ -85,7 +85,11 @@ const Contact = () => {
           placeholder="Your Message"
           required
         ></textarea>
-        <button type="submit" className="btn btn-primary" style={{padding :"10px"}}>
+        <button
+          type="submit"
+          className="btn btn-primary"
+          style={{ padding: "10px" }}
+        >
           Send Message
         </button>
       </form>
