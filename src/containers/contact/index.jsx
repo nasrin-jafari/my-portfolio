@@ -12,7 +12,7 @@ const Contact = () => {
 
     emailjs
       .sendForm(
-        "service_00klu8q",
+        "service_7z42cju",
         "template_c86ur71",
         form.current,
         "gKnnDKF_USRGmwwRt"
@@ -25,6 +25,7 @@ const Contact = () => {
           console.log(error.text);
         }
       );
+      form.current.reset()
   };
 
   return (
@@ -55,26 +56,36 @@ const Contact = () => {
       >
         <div className="social">
           <a href="https://www.linkedin.com/in/nasrin-jafri" target="_blank">
-            <FaLinkedinIn size={40} />
+            <FaLinkedinIn size={24} />
           </a>
           <a href="https://t.me/Naasiiiin" target="_blank">
-            <FaTelegramPlane size={40} />
+            <FaTelegramPlane size={24} />
           </a>
           <a href="mailto:nasrin.jafari778@gmail.com" target="_blank">
-            <HiMail size={40} />
+            <HiMail size={24} />
           </a>
         </div>
       </Animate>
       <form ref={form} onSubmit={sendEmail} action="">
-        <input type="text" name="name" placeholder="Your Full Name" required />
-        <input type="email" name="email" placeholder="Your Email" required />
+        <input
+          type="text"
+          name="user_name"
+          placeholder="Your Full Name"
+          required
+        />
+        <input
+          type="email"
+          name="user_email"
+          placeholder="Your Email"
+          required
+        />
         <textarea
           name="message"
-          rows="7"
+          rows="6"
           placeholder="Your Message"
           required
         ></textarea>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-primary" style={{padding :"10px"}}>
           Send Message
         </button>
       </form>
