@@ -7,3 +7,4 @@ export { default as restaurent } from "./restaurent.png";
 export { default as shab } from "./shab.png";
 export { default as shop } from "./shop.png";
 export { default as youtube } from "./youtube.png";
+export { default as pizza } from "./pizza-shop.png";

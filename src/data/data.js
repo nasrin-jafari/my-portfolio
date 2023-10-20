@@ -8,6 +8,7 @@ import {
   gpt3,
   bank,
   restaurent,
+  pizza
 } from "../images";
 
 export const portfolioData = [
@@ -27,41 +28,48 @@ export const portfolioData = [
   },
   {
     id: 3,
+    name: "Pizza Shop",
+    linkGitHub: "https://github.com/nasrin-jafari/pizza-shop",
+    linkVercel: "https://pizza-shop-wave.vercel.app/",
+    image: pizza,
+  },
+  {
+    id: 4,
     name: "Ecommerce Shop",
     image: shop,
     linkGitHub: "https://github.com/nasrin-jafari/Ecommerce-shop",
     linkVercel: "https://ecommerce-shop-theme.vercel.app/",
   },
   {
-    id: 4,
+    id: 5,
     name: "Shab WebSite",
     image: shab,
     linkGitHub: "https://github.com/Masoudbkhti/Shab",
     linkVercel: "https://shab-two.vercel.app/",
   },
   {
-    id: 5,
+    id: 6,
     name: "Music Player",
     image: music,
     linkGitHub: "https://github.com/nasrin-jafari/music-player",
     linkVercel: "https://music-player-wave.vercel.app/",
   },
   {
-    id: 6,
+    id: 7,
     name: "Business WebSite",
     image: bank,
     linkGitHub: "https://github.com/nasrin-jafari/bank-website",
     linkVercel: "https://business-website-theme.vercel.app/",
   },
   {
-    id: 7,
+    id: 8,
     name: "Restaurant WebSite",
     image: restaurent,
     linkGitHub: "https://github.com/nasrin-jafari/restaurant-website",
     linkVercel: "https://restaurant-website-theme.vercel.app/",
   },
   {
-    id: 8,
+    id: 9,
     name: "Chatgpt3 WebSite",
     image: gpt3,
     linkGitHub: "https://github.com/nasrin-jafari/Website-gpt3",
@@ -69,7 +77,7 @@ export const portfolioData = [
   },
 
   {
-    id: 9,
+    id: 10,
     name: "Bejourney Theme",
     image: bejourney,
     linkGitHub: "https://github.com/nasrin-jafari/bejourney.git",
