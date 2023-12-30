@@ -1,184 +1,204 @@
-# React + Vite
-#typography
-import localFont from 'next/font/local';
-import { Barlow, Public_Sans } from 'next/font/google';
-
-// ----------------------------------------------------------------------
-
-export function remToPx(value) {
-  return Math.round(parseFloat(value) * 16);
-}
-
-export function pxToRem(value) {
-  return `${value / 16}rem`;
-}
-
-export function responsiveFontSizes({ sm, md, lg }) {
-  return {
-    '@media (min-width:600px)': {
-      fontSize: pxToRem(sm),
+import React, { useState } from "react";
+import { FaFile, FaFolder } from "react-icons/fa6";
+const App = () => {
+  const [activeFolder, setActiveFolder] = useState(null);
+  const [selectedItems, setSelectedItems] = useState([]);
+  const [items, setItems] = useState( [
+    {
+      id: 1,
+      folder: true,
+      name: "aba",
+      content: [
+        { id: 101, folder: false, name: "File 1-1" },
+        {
+          id: 102,
+          folder: true,
+          name: "Subfolder 1-2",
+          content: [
+            { id: 101, folder: false, name: "File 1-1" },
+            // ... سایر آیتم‌ها
+          ],
+        },
+        // ... سایر آیتم‌ها
+      ],
     },
-    '@media (min-width:900px)': {
-      fontSize: pxToRem(md),
+    {
+      id: 2,
+      folder: false,
+      name: "aa",
     },
-    '@media (min-width:1200px)': {
-      fontSize: pxToRem(lg),
+    {
+      id: 4,
+      folder: false,
+      name: "aa",
     },
+    {
+      id: 3,
+      folder: true,
+      name: "ab2",
+      content: [
+        { id: 101, folder: false, name: "File 2-1" },
+        {
+          id: 102,
+          folder: true,
+          name: "Subfolder 1-2",
+          content: [
+            { id: 101, folder: false, name: "File 2-1" },
+            {
+              id: 101,
+              folder: true,
+              name: "folder 1-1",
+              content: [
+                { id: 101, folder: false, name: "File 1-1" },
+                {
+                  id: 102,
+                  folder: true,
+                  name: "Subfolder 1-2",
+                  content: [
+                    { id: 101, folder: false, name: "File 1-1" },
+                    // ... سایر آیتم‌ها
+                  ],
+                },
+                // ... سایر آیتم‌ها
+              ],
+            },
+            // ... سایر آیتم‌ها
+          ],
+        },
+        // ... سایر آیتم‌ها
+      ],
+    },
+  
+    {
+      id: 5,
+      folder: true,
+      name: "ab",
+      content: [
+        { id: 101, folder: false, name: "File 1-1" },
+        {
+          id: 102,
+          folder: true,
+          name: "Subfolder 1-2",
+          content: [
+            { id: 101, folder: false, name: "File 1-1" },
+            // ... سایر آیتم‌ها
+          ],
+        },
+        // ... سایر آیتم‌ها
+      ],
+    },
+  ]);
+
+
+  const handleSelectItem = (id) => {
+    setSelectedItems((prevSelectedItems) =>
+      prevSelectedItems.includes(id)
+        ? prevSelectedItems.filter((item) => item !== id)
+        : [...prevSelectedItems, id]
+    );
   };
-}
+  const handleDeleteSelectedItems = () => {
+    const deleteSelected = (list) => {
+      return list
+        .filter(item => !selectedItems.includes(item.id)) // حذف آیتم‌های انتخاب شده
+        .map(item => {
+          if (item.folder && item.content) {
+            // اگر آیتم یک فولدر با محتویات است، محتویات آن را بررسی کنید
+            return { ...item, content: deleteSelected(item.content) };
+          }
+          return item; // اگر آیتم فولدر نیست، آن را بازگردانید
+        });
+    };
+  
+    setItems(deleteSelected(items));
+    setSelectedItems([]);
+    console.log("items", items) // پاک کردن لیست آیتم‌های انتخاب شده
+  };
+  const handleClick = (item) => {
+    if (item.folder) {
+      setActiveFolder(item);
+    }
+  };
 
-export const primaryFont = localFont({
-  weight: ['200', '300', '500', '700', '900'],
-  subsets: ['latin'],
-  display: 'swap',
-  fallback: ['Helvetica', 'Arial', 'sans-serif'],
-  src: [
-    {
-      path: '../../assets/fonts/iransans/woff2/IRANSansWeb(FaNum)_Black.woff2',
-      weight: '900',
-      style: 'normal',
-    },
-    {
-      path: '../../assets/fonts/iransans/woff2/IRANSansWeb(FaNum)_Bold.woff2',
-      weight: 'bold',
-      style: 'normal',
-    },
-    {
-      path: '../../assets/fonts/iransans/woff2/IRANSansWeb(FaNum)_Medium.woff2',
-      weight: '500',
-      style: 'normal',
-    },
-    {
-      path: '../../assets/fonts/iransans/woff2/IRANSansWeb(FaNum)_Light.woff2',
-      weight: '300',
-      style: 'normal',
-    },
-    {
-      path: '../../assets/fonts/iransans/woff2/IRANSansWeb(FaNum)_UltraLight.woff2',
-      weight: '200',
-      style: 'normal',
-    },
-  ],
-});
+  return (
+    <div style={{ display: "flex" }}>
+      <div>
+        <button onClick={handleDeleteSelectedItems}>Delete Selected</button>
 
-export const secondaryFont = Barlow({
-  weight: ['400', '500', '600', '700', '800', '900'],
-  subsets: ['latin'],
-  display: 'swap',
-  fallback: ['IRANSans', 'Helvetica', 'Arial', 'sans-serif'],
-});
-
-// ----------------------------------------------------------------------
-
-// LEARN MORE
-// https://nextjs.org/docs/basic-features/font-optimization#google-fonts
-
-export const typography = {
-  fontFamily: primaryFont.style.fontFamily,
-  fontSecondaryFamily: secondaryFont.style.fontFamily,
-  fontWeightRegular: 400,
-  fontWeightMedium: 500,
-  fontWeightSemiBold: 600,
-  fontWeightBold: 700,
-  h1: {
-    fontWeight: 700,
-    lineHeight: 80 / 64,
-    fontSize: pxToRem(30),
-    ...responsiveFontSizes({ sm: 30, md: 30, lg: 30 }),
-  },
-  h2: {
-    fontWeight: 700,
-    lineHeight: 64 / 48,
-    fontSize: pxToRem(24),
-    ...responsiveFontSizes({ sm: 24, md: 24, lg: 24 }),
-  },
-  h3: {
-    fontWeight: 700,
-    lineHeight: 1.5,
-    fontSize: pxToRem(20),
-    ...responsiveFontSizes({ sm: 20, md: 20, lg: 20 }),
-  },
-  h4: {
-    fontWeight: 700,
-    lineHeight: 1.5,
-    fontSize: pxToRem(18),
-    ...responsiveFontSizes({ sm: 18, md: 18, lg: 18 }),
-  },
-  h5: {
-    fontWeight: 700,
-    lineHeight: 1.5,
-    fontSize: pxToRem(16),
-    ...responsiveFontSizes({ sm: 16, md: 16, lg: 16 }),
-  },
-  h6: {
-    fontWeight: 700,
-    lineHeight: 28 / 18,
-    fontSize: pxToRem(17),
-    ...responsiveFontSizes({ sm: 18, md: 18, lg: 18 }),
-  },
-  subtitle1: {
-    fontWeight: 500,
-    lineHeight: 1.5,
-    fontSize: pxToRem(16),
-  },
-  subtitle2: {
-    fontWeight: 500,
-    lineHeight: 22 / 14,
-    fontSize: pxToRem(14),
-  },
-  body1: {
-    lineHeight: 1.5,
-    fontSize: pxToRem(16),
-  },
-  body2: {
-    lineHeight: 22 / 14,
-    fontSize: pxToRem(14),
-  },
-  caption: {
-    lineHeight: 1.5,
-    fontSize: pxToRem(12),
-  },
-  overline: {
-    fontWeight: 700,
-    lineHeight: 1.5,
-    fontSize: pxToRem(12),
-    textTransform: 'uppercase',
-  },
-  button: {
-    fontWeight: 700,
-    lineHeight: 24 / 14,
-    fontSize: pxToRem(14),
-    textTransform: 'unset',
-  },
-};
-#index.js
-import { typography } from './typography';
-
-  const memoizedValue = useMemo(
-    () => ({
-      palette: {
-        ...palette(settings.themeMode),
-        ...presets.palette,
-        ...contrast.palette,
-      },
-      customShadows: {
-        ...customShadows(settings.themeMode),
-        ...presets.customShadows,
-      },
-      direction: settings.themeDirection,
-      shadows: shadows(settings.themeMode),
-      shape: { borderRadius: 8 },
-      typography,
-    }),
-    [
-      settings.themeMode,
-      settings.themeDirection,
-      presets.palette,
-      presets.customShadows,
-      contrast.palette,
-    ]
+        {items.map((item) => (
+          <div
+            key={item.id}
+            onClick={() => handleClick(item)}
+            style={{ cursor: "pointer" }}
+          >
+            {item.folder ? (
+              <FaFolder style={{ color: "orange", fontSize: "30px" }} />
+            ) : (
+              <FaFile style={{ color: "orange", fontSize: "30px" }} />
+            )}
+            {item.name}
+          </div>
+        ))}
+      </div>
+      {activeFolder && (
+        <div style={{ marginLeft: "20px" }}>
+          <h3>{activeFolder.name}</h3>
+          {activeFolder.content.map((subItem) => (
+           <div style={{
+            display :"flex",
+            alignItems :"center",
+            justifyContent :"space-between"
+           }}>
+             <div
+              key={subItem.id}
+              onClick={() => handleClick(subItem)}
+              style={{ cursor: "pointer" }}
+            >
+              {subItem.folder ? (
+                <FaFolder style={{ color: "blue", fontSize: "20px" }} />
+              ) : (
+                <FaFile style={{ color: "blue", fontSize: "20px" }} />
+              )}
+              {subItem.name}
+            </div>
+            <div>
+            <input
+              type="checkbox"
+              checked={selectedItems.includes(subItem.id)}
+              onChange={() => handleSelectItem(subItem.id)}
+            />
+            </div>
+           </div>
+          ))}
+        </div>
+      )}
+    </div>
   );
-  #layout.js
-  import {primaryFont} from '@src/core/theme/typography';
- <html lang="en" className={primaryFont.className}>
- 
+};
+
+export default App;
+  // const handleDeleteSelectedItems = () => {
+  //   const deleteItems = (items, selectedIds) => {
+  //     return items.reduce((result, item) => {
+  //       if (selectedIds.includes(item.id)) {
+  //         // اگر آیتم انتخاب شده است، آن را حذف کنید
+  //         return result;
+  //       }
+  
+  //       // اگر آیتم یک فولدر با محتویات باشد، محتویات آن را نیز بررسی کنید
+  //       if (item.folder && item.content) {
+  //         const filteredContent = deleteItems(item.content, selectedIds);
+  //         result.push({ ...item, content: filteredContent });
+  //       } else {
+  //         // اگر آیتم فولدر نیست، آن را به نتیجه نهایی اضافه کنید
+  //         result.push(item);
+  //       }
+  
+  //       return result;
+  //     }, []);
+  //   };
+  
+  //   setItems(prevItems => deleteItems(prevItems, selectedItems));
+  //   setSelectedItems([]); // پاک کردن لیست آیتم‌های انتخاب شده
+  // };
+  
