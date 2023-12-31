@@ -1,204 +1,209 @@
-import React, { useState } from "react";
-import { FaFile, FaFolder } from "react-icons/fa6";
-const App = () => {
-  const [activeFolder, setActiveFolder] = useState(null);
-  const [selectedItems, setSelectedItems] = useState([]);
-  const [items, setItems] = useState( [
-    {
-      id: 1,
-      folder: true,
-      name: "aba",
-      content: [
-        { id: 101, folder: false, name: "File 1-1" },
-        {
-          id: 102,
-          folder: true,
-          name: "Subfolder 1-2",
-          content: [
-            { id: 101, folder: false, name: "File 1-1" },
-            // ... سایر آیتم‌ها
-          ],
-        },
-        // ... سایر آیتم‌ها
-      ],
-    },
-    {
-      id: 2,
-      folder: false,
-      name: "aa",
-    },
-    {
-      id: 4,
-      folder: false,
-      name: "aa",
-    },
-    {
-      id: 3,
-      folder: true,
-      name: "ab2",
-      content: [
-        { id: 101, folder: false, name: "File 2-1" },
-        {
-          id: 102,
-          folder: true,
-          name: "Subfolder 1-2",
-          content: [
-            { id: 101, folder: false, name: "File 2-1" },
-            {
-              id: 101,
-              folder: true,
-              name: "folder 1-1",
-              content: [
-                { id: 101, folder: false, name: "File 1-1" },
-                {
-                  id: 102,
-                  folder: true,
-                  name: "Subfolder 1-2",
-                  content: [
-                    { id: 101, folder: false, name: "File 1-1" },
-                    // ... سایر آیتم‌ها
-                  ],
-                },
-                // ... سایر آیتم‌ها
-              ],
-            },
-            // ... سایر آیتم‌ها
-          ],
-        },
-        // ... سایر آیتم‌ها
-      ],
-    },
-  
-    {
-      id: 5,
-      folder: true,
-      name: "ab",
-      content: [
-        { id: 101, folder: false, name: "File 1-1" },
-        {
-          id: 102,
-          folder: true,
-          name: "Subfolder 1-2",
-          content: [
-            { id: 101, folder: false, name: "File 1-1" },
-            // ... سایر آیتم‌ها
-          ],
-        },
-        // ... سایر آیتم‌ها
-      ],
-    },
-  ]);
-
-
-  const handleSelectItem = (id) => {
-    setSelectedItems((prevSelectedItems) =>
-      prevSelectedItems.includes(id)
-        ? prevSelectedItems.filter((item) => item !== id)
-        : [...prevSelectedItems, id]
-    );
+import React, { useEffect } from "react";
+import { DiCss3, DiJavascript, DiNpm } from "react-icons/di";
+import  { useState } from "react";
+import { FaCheckSquare, FaList, FaMinusSquare, FaRegFolder, FaRegFolderOpen, FaSquare, FaUser } from "react-icons/fa";
+import TreeView, { flattenTree } from "react-accessible-treeview";
+import "./styles.css";
+const folder = {
+    name: "",
+    ou: [
+      {
+        id :1,
+        name: "src",
+        ou: [{ name: "index.js", id :2 }, { name: "styles.css" ,  id :3}],
+      },
+      {
+        name: "node_modules",
+        id :4,
+        ou: [{ name: "index.js", id :5 }, { name: "styles.css" ,  id :6}],
+      },
+      {
+        name: ".npmignore",
+        id :9
+      },
+      {
+        name: "package.json",
+        id :7
+      },
+      {
+        name: "webpack.config.js",
+        id :8 
+      },
+    ],
   };
-  const handleDeleteSelectedItems = () => {
-    const deleteSelected = (list) => {
-      return list
-        .filter(item => !selectedItems.includes(item.id)) // حذف آیتم‌های انتخاب شده
-        .map(item => {
-          if (item.folder && item.content) {
-            // اگر آیتم یک فولدر با محتویات است، محتویات آن را بررسی کنید
-            return { ...item, content: deleteSelected(item.content) };
-          }
-          return item; // اگر آیتم فولدر نیست، آن را بازگردانید
-        });
-    };
+function changeChildrenKeyToX(obj) {
+    let newObj = { ...obj };
   
-    setItems(deleteSelected(items));
-    setSelectedItems([]);
-    console.log("items", items) // پاک کردن لیست آیتم‌های انتخاب شده
-  };
-  const handleClick = (item) => {
-    if (item.folder) {
-      setActiveFolder(item);
+    if (newObj.ou) {
+      newObj.children = newObj.ou.map(child => changeChildrenKeyToX(child));
+      delete newObj.ou;
     }
-  };
+  
+    return newObj;
+  }
+  const newFolderStructure = changeChildrenKeyToX(folder);
+  console.log(newFolderStructure);
 
+  const data = flattenTree(newFolderStructure);
+console.log("data", data)
+
+
+function MultiSelectDirectoryTreeView() {
+    const [selectedItems, setSelectedItems] = useState([]);
+    const handleSelected = (id) => {
+        setSelectedItems(prevSelectedItems =>
+          prevSelectedItems.includes(id)
+            ? prevSelectedItems.filter(item => item !== id)
+            : [...prevSelectedItems, id]
+        );
+      };
+     
   return (
-    <div style={{ display: "flex" }}>
-      <div>
-        <button onClick={handleDeleteSelectedItems}>Delete Selected</button>
-
-        {items.map((item) => (
-          <div
-            key={item.id}
-            onClick={() => handleClick(item)}
-            style={{ cursor: "pointer" }}
-          >
-            {item.folder ? (
-              <FaFolder style={{ color: "orange", fontSize: "30px" }} />
-            ) : (
-              <FaFile style={{ color: "orange", fontSize: "30px" }} />
-            )}
-            {item.name}
-          </div>
-        ))}
-      </div>
-      {activeFolder && (
-        <div style={{ marginLeft: "20px" }}>
-          <h3>{activeFolder.name}</h3>
-          {activeFolder.content.map((subItem) => (
-           <div style={{
-            display :"flex",
-            alignItems :"center",
-            justifyContent :"space-between"
-           }}>
-             <div
-              key={subItem.id}
-              onClick={() => handleClick(subItem)}
-              style={{ cursor: "pointer" }}
-            >
-              {subItem.folder ? (
-                <FaFolder style={{ color: "blue", fontSize: "20px" }} />
+    <div>
+      <div className="ide">
+        <TreeView
+          data={data}
+          aria-label="directory tree"
+          multiSelect
+          propagateSelect
+          propagateSelectUpwards
+          togglableSelect
+          nodeRenderer={({
+            element,
+            isBranch,
+            isExpanded,
+            isSelected,
+            isHalfSelected,
+            getNodeProps,
+            level,
+            handleSelect,
+            handleExpand,
+          }) => (
+            <div {...getNodeProps({ onClick: handleExpand })} style={{ paddingLeft: 20 * (level - 1) }}>
+                  <CheckBoxIcon
+                  className="checkbox-icon"
+                  onClick={(e) => {
+                    handleSelect(e);
+                    handleSelected(element.id)
+                    e.stopPropagation();
+                  }}
+                  variant={
+                    isHalfSelected ? "some" : isSelected ? "all" : "none"
+                  }
+                />
+              {isBranch ? (
+                <FolderIcon isOpen={isExpanded} />
               ) : (
-                <FaFile style={{ color: "blue", fontSize: "20px" }} />
+                <FaUser style={{
+                    marginRight :"10px",olor :"gray"
+                }} />
+                // <FileIcon filename={element.name} />
               )}
-              {subItem.name}
+            
+              {element.name}
             </div>
-            <div>
-            <input
-              type="checkbox"
-              checked={selectedItems.includes(subItem.id)}
-              onChange={() => handleSelectItem(subItem.id)}
-            />
-            </div>
-           </div>
-          ))}
-        </div>
-      )}
+          )}
+        />
+      </div>
+      {
+        selectedItems.length && selectedItems.map((item)=>(
+            <p>{item}</p>
+        ))
+      }
     </div>
   );
-};
+}
 
-export default App;
-  // const handleDeleteSelectedItems = () => {
-  //   const deleteItems = (items, selectedIds) => {
-  //     return items.reduce((result, item) => {
-  //       if (selectedIds.includes(item.id)) {
-  //         // اگر آیتم انتخاب شده است، آن را حذف کنید
-  //         return result;
-  //       }
-  
-  //       // اگر آیتم یک فولدر با محتویات باشد، محتویات آن را نیز بررسی کنید
-  //       if (item.folder && item.content) {
-  //         const filteredContent = deleteItems(item.content, selectedIds);
-  //         result.push({ ...item, content: filteredContent });
-  //       } else {
-  //         // اگر آیتم فولدر نیست، آن را به نتیجه نهایی اضافه کنید
-  //         result.push(item);
-  //       }
-  
-  //       return result;
-  //     }, []);
-  //   };
-  
-  //   setItems(prevItems => deleteItems(prevItems, selectedItems));
-  //   setSelectedItems([]); // پاک کردن لیست آیتم‌های انتخاب شده
-  // };
-  
+const FolderIcon = ({ isOpen }) =>
+  isOpen ? (
+    <FaRegFolderOpen color="e8a87c" className="icon"  style={{
+            marginRight :"10px"
+        }}/>
+  ) : (
+    <FaRegFolder color="e8a87c" className="icon" style={{
+            marginRight :"10px"
+        }} />
+  );
+
+const FileIcon = ({ filename }) => {
+  const extension = filename.slice(filename.lastIndexOf(".") + 1);
+  switch (extension) {
+    case "js":
+      return <DiJavascript color="yellow" className="icon" />;
+    case "css":
+      return <DiCss3 color="turquoise" className="icon" />;
+    case "json":
+      return <FaList color="yellow" className="icon" />;
+    case "npmignore":
+      return <DiNpm color="red" className="icon" />;
+    default:
+      return null;
+  }
+};
+const CheckBoxIcon = ({ variant, ...rest }) => {
+    switch (variant) {
+      case "all":
+        return <FaCheckSquare  style={{
+            marginRight :"14px" ,color :'orange'
+        }} {...rest} />;
+      case "none":
+        return <FaSquare style={{
+            marginRight :"14px" ,color :'orange'
+        }}  {...rest} />;
+      case "some":
+        return <FaMinusSquare  style={{
+            marginRight :"14px" ,color :'orange'
+        }}  {...rest} />;
+      default:
+        return null;
+    }
+  };
+export default MultiSelectDirectoryTreeView;
+.ide {
+  background: #242322;
+  font-family: monospace;
+  font-size: 16px;
+  color: white;
+  user-select: none;
+  padding: 20px;
+  border-radius: 0.4em;
+}
+
+.ide .tree,
+.ide .tree-node,
+.ide .tree-node-group {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ide .tree-branch-wrapper,
+.ide .tree-node__leaf {
+  outline: none;
+  outline: none;
+}
+
+.ide .tree-node {
+  cursor: pointer;
+}
+
+.ide .tree-node:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.ide .tree .tree-node--focused {
+  background: rgba(255, 255, 255, 0.2);
+}
+
+.ide .tree .tree-node--selected {
+  background: rgba(48, 107, 176);
+}
+
+.ide .tree-node__branch {
+  display: block;
+}
+
+.ide .icon {
+  vertical-align: middle;
+  margin-right: 5px;
+}
