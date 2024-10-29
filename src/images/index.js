@@ -8,3 +8,6 @@ export { default as shab } from "./shab.png";
 export { default as shop } from "./shop.png";
 export { default as youtube } from "./youtube.png";
 export { default as pizza } from "./pizza-shop.png";
+export { default as stoneonstone } from "./stoneonstone.png";
+export { default as tenotas } from "./tenotas.png";
+export { default as querybuilder } from "./querybuilder.png";

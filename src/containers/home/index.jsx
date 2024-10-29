@@ -1,7 +1,7 @@
-import React from "react";
-import { Animate } from "react-simple-animate";
+import {Animate} from "react-simple-animate";
 import "./styles.scss";
-import { CTA } from "../../components";
+import {CTA} from "../../components";
+
 const Home = () => {
   return (
     <section id="home" className="home">

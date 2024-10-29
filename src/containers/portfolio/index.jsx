@@ -1,6 +1,6 @@
-import React, { useRef, useState } from "react";
+import  {useRef} from "react";
 // Import Swiper React components
-import { Swiper, SwiperSlide } from "swiper/react";
+import {Swiper, SwiperSlide} from "swiper/react";
 
 // Import Swiper styles
 import "swiper/css";
@@ -8,9 +8,9 @@ import "swiper/css/pagination";
 import "swiper/css/navigation";
 
 import "./styles.css";
-import { portfolioData } from "../../data/data";
+import {portfolioData} from "../../data/data";
 // import required modules
-import { Autoplay, Pagination, Navigation } from "swiper/modules";
+import {Autoplay, Navigation, Pagination} from "swiper/modules";
 
 const Portfolio = () => {
   const progressCircle = useRef(null);
@@ -46,16 +46,25 @@ const Portfolio = () => {
                   </div>
                   <h3>{name}</h3>
                   <div className="portfolio__item-cta">
-                    <a href={linkGitHub} className="btn" target="_blank">
-                      Github
-                    </a>
-                    <a
-                      href={linkVercel}
-                      className="btn btn-primary"
-                      target="_blank"
-                    >
-                      Live Demo
-                    </a>
+                    {
+                      linkGitHub && (
+                            <a href={linkGitHub} className="btn" target="_blank">
+                              Github
+                            </a>
+                        )
+                    }
+                    {
+                      linkVercel && (
+                            <a
+                                href={linkVercel}
+                                className="btn btn-primary"
+                                target="_blank"
+                            >
+                              Live Demo
+                            </a>
+                        )
+                    }
+
                   </div>
                 </article>
               </SwiperSlide>
@@ -63,7 +72,7 @@ const Portfolio = () => {
           })}
 
           <div className="autoplay-progress" slot="container-end">
-            <svg viewBox="0 0 48 48" ref={progressCircle}>
+          <svg viewBox="0 0 48 48" ref={progressCircle}>
               <circle cx="24" cy="24" r="20"></circle>
             </svg>
             <span ref={progressContent} style={{ color: "#06a07f" }}></span>

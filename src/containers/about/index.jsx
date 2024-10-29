@@ -1,4 +1,3 @@
-import React from "react";
 import "./styles.scss";
 import { FaReact } from "react-icons/fa";
 import { TbWorldCode } from "react-icons/tb";
@@ -13,7 +12,7 @@ import {
 import "react-vertical-timeline-component/style.min.css";
 import { resumeData } from "../../data/data";
 const jobSummary =
-  "Hi i'm nasrin, 24 years old, and I am a front end developer and like challenge and excitement";
+  "Hi i'm nasrin, 26 years old, and I am Front-end developer with 2 years of experience";
 const About = () => {
   return (
     <div className="about">
@@ -22,7 +21,7 @@ const About = () => {
           about me
         </h3>
         <p className="about-detail">{jobSummary}</p>
-        <h3 className="timeline__education__header-text">Education</h3>
+        <h3 className="timeline__education__header-text">Experience</h3>
         <VerticalTimeline
           layout={"1-column"}
           lineColor="var(--theme-main-color)"
@@ -51,9 +50,9 @@ const About = () => {
                   {item.subTitle}
                 </p>
               </div>
-              <p className="vertical-timeline-element-title-wrapper-description">
-                {item.description}{" "}
-              </p>
+              {/*<p className="vertical-timeline-element-title-wrapper-description">*/}
+              {/*  {item.description}{" "}*/}
+              {/*</p>*/}
             </VerticalTimelineElement>
           ))}
         </VerticalTimeline>

@@ -1,11 +1,9 @@
-import React from "react";
-import { BsPatchCheckFill } from "react-icons/bs";
+import {BsInfoCircleFill, BsPatchCheckFill} from "react-icons/bs";
 import "./styles.scss";
-import { skillsData } from "../../data/data";
-import { PageHeaderContent } from "../../components";
-import { BsInfoCircleFill } from "react-icons/bs";
+import {skillsData} from "../../data/data";
+import {PageHeaderContent} from "../../components";
 
-import { Animate } from "react-simple-animate";
+import {Animate} from "react-simple-animate";
 
 const Skills = () => {
   return (

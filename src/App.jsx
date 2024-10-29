@@ -1,10 +1,10 @@
-import React from "react";
 import Particles from "react-tsparticles";
-import { loadFull } from "tsparticles";
-import { Routes, Route } from "react-router-dom";
-import { Home, About, Skills, Portfolio, Contact } from "./containers";
+import {loadFull} from "tsparticles";
+import {Route, Routes} from "react-router-dom";
+import {About, Contact, Home, Portfolio, Skills} from "./containers";
 import particles from "./utils/particles";
-import { NavBar } from "./components";
+import {NavBar} from "./components";
+
 const App = () => {
   const handleInit = async (main) => {
     await loadFull(main);

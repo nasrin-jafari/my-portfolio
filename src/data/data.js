@@ -8,16 +8,40 @@ import {
   gpt3,
   bank,
   restaurent,
-  pizza
+  pizza,
+  tenotas ,
+  stoneonstone ,
+  querybuilder
 } from "../images";
 
 export const portfolioData = [
+ {
+    id: 102,
+    name: "stone on stone",
+    image: stoneonstone,
+    linkGitHub: undefined,
+    linkVercel: "https://srs.bmn.ir/panel/",
+  },
   {
+    id: 252,
+    name: "tenotas",
+    linkGitHub: undefined,
+    linkVercel: "https://webapp.tenotas.ir/",
+    image: tenotas,
+  },  {
     id: 1,
     name: "Movix",
     image: movix,
     linkGitHub: "https://github.com/nasrin-jafari/movie-website",
     linkVercel: "https://movie-website-wave.vercel.app/",
+  }
+  ,
+  {
+    id: 894,
+    name: "Query builder",
+    image: querybuilder,
+    linkGitHub: "https://github.com/nasrin-jafari/query_builder",
+    linkVercel: undefined,
   },
   {
     id: 2,
@@ -90,24 +114,47 @@ export const skillsData = [
   { id: 2, name: "CSS3", value: 85 },
   { id: 3, name: "Tailwind", value: 82 },
   { id: 4, name: "Sass", value: 80 },
-  { id: 5, name: "JavaScript", value: 70 },
-  { id: 6, name: "ReactJS", value: 73 },
-  { id: 7, name: "NextJS", value: 64 },
-  { id: 8, name: "Mui", value: 60 },
-  { id: 9, name: "Redux toolkit", value: 60 },
-  { id: 10, name: "Git & Github", value: 60 },
+  { id: 5, name: "Material ui (mui)", value: 80 },
+  { id: 6, name: "Ant design", value: 80 },
+  { id: 6, name: "bootstrap", value: 80 },
+  { id: 7, name: "JavaScript", value: 70 },
+  { id: 8, name: "Typescript", value: 70 },
+  { id: 9, name: "React.JS", value: 73 },
+  { id: 10, name: "Next.JS", value: 64 },
+  { id: 11, name: "axios", value: 60 },
+  { id: 12, name: "react-hook-form", value: 60 },
+  { id: 13, name: "yup", value: 60 },
+  { id: 14, name: "rechart", value: 60 },
+  { id: 15, name: "Echart", value: 60 },
+  { id: 16, name: "react-query", value: 60 },
+  { id: 17, name: "Redux toolkit", value: 60 },
+  { id: 18, name: "Git & Github", value: 60 },
+  { id: 19, name: "pwa", value: 60 },
+  { id: 20, name: "jest", value: 60 },
+  { id: 21, name: "story-book", value: 60 },
+  { id: 22, name: "socket.io", value: 60 },
 ];
 export const resumeData = [
   {
-    title: "University",
-    subTitle: "' University buAli Sina'",
-    description: "Master of International Law",
-    date: "2016 - 2022",
+    title: "Front-End developer",
+    subTitle: "'Fapta Company'",
+    description: "typescript , next.js ",
+    date: "Full-time (October 2023 – Present)",
   },
   {
-    title: "Educational academy",
-    subTitle: "'Daneshkar '",
-    description: "Bootcamp React",
-    date: "2022 - 2023",
+    title: "Front-End developer",
+    subTitle: "'Eejaad Company'",
+    description: "pwa ,  next.js  ,  minimal material ui",
+    date: " Remote Work (February 2023 - September 2023)",
+  },  {
+    title: "Front-End Development Intern",
+    subTitle: "'Daneshkar React Bootcamp'",
+    description: "pwa ,  next.js  ,  minimal material ui",
+    date: "Online(September 2022 - April 2023)",
+  },{
+    title: "Photoshop Editor",
+    subTitle: "'Studio'",
+    description: "pwa ,  next.js  ,  minimal material ui",
+    date: "Hamedan - Full-time (April 2020 - March 2022)\n",
   },
 ];
