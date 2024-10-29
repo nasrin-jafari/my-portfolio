@@ -56,10 +56,10 @@ const Contact = () => {
         }}
       >
         <div className="social">
-          <a href="https://www.linkedin.com/in/nasrin-jafri" target="_blank">
+          <a href="https://www.linkedin.com/in/nasrin-jfri" target="_blank">
             <FaLinkedinIn size={28} />
           </a>
-          <a href="https://t.me/Naasiiiin" target="_blank">
+          <a href="https://t.me/Nasrin_jfri" target="_blank">
             <FaTelegramPlane size={28} />
           </a>
           <a href="mailto:nasrin.jafari778@gmail.com" target="_blank">
