@@ -135,11 +135,17 @@ export const skillsData = [
   { id: 22, name: "socket.io", value: 60 },
 ];
 export const resumeData = [
+   {
+    title: "Front-End developer",
+    subTitle: "'Tosan Techno'",
+    description: "typescript , react.js ",
+    date: "Full-time (December 2024 – Present)",
+  },
   {
     title: "Front-End developer",
     subTitle: "'Fapta Company'",
     description: "typescript , next.js ",
-    date: "Full-time (October 2023 – Present)",
+    date: "Full-time (October 2023 – December 2024)",
   },
   {
     title: "Front-End developer",
